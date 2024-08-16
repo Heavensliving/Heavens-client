@@ -154,7 +154,7 @@ const generateUniqueId = () => {
         propertyOwnerName: formData.propertyOwnerName,
       };
   
-      const response = await axios.post('http://localhost:5000/api/properties/add-property', propertyData, {
+      const response = await axios.post('https://heavensmanagement.onrender.com/api/properties/add-property', propertyData, {
         headers: {
           'Content-Type': 'application/json',
         },
