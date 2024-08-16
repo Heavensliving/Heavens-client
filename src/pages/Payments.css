@@ -1,0 +1,146 @@
+.Payments-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.PaymentSection-title {
+  font-size: 30px;
+  font-weight: 400;
+  color: #000;
+}
+
+.button-container {
+  display: flex;
+  gap: 10px; /* Adjust the gap between buttons as needed */
+}
+
+.add-expense-button {
+  background-color: #ffcccc; /* Light red background color */
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #ac0000;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.add-expense-button:hover {
+  background-color: #d67c7c;
+  color: #fff;
+}
+
+.pay-fee-button {
+  background-color: #b3e7b3; /* Light green background color */
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  color: #007a00;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-right: 50px;
+}
+
+.pay-fee-button:hover {
+  background-color: #73be73;
+  color: #fff;
+}
+
+.moneymanagementdash-section {
+  margin-top: 20px;
+}
+
+.moneymanagementdash-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.moneymanagementdash-title {
+  font-size: 24px;
+  font-weight: 400;
+  color: #000;
+  margin-top: 20px;
+}
+
+.moneymanagementdash-sort {
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.moneymanagementdash-container {
+  max-height: 520px; /* Set max height for the container */
+  overflow-y: auto; /* Enable vertical scrolling */
+  border: 1px solid #ccc; /* Optional: Add a border to the container */
+  padding: 10px;
+  margin-bottom: 20px; /* Add spacing between sections */
+}
+
+.moneymanagementdash-boxes {
+  display: flex;
+  flex-wrap: wrap; /* Allows wrapping to the next line */
+  gap: 20px; /* Space between boxes */
+}
+
+.moneymanagementdash-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Adjust alignment as needed */
+  flex: 1 1 calc(25% - 20px); /* 25% width minus the gap */
+  padding: 20px;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #f9f9f9;
+  box-sizing: border-box; /* Ensures padding is included in width calculation */
+}
+
+.moneymanagementdash-box-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.moneymanagementdash-icon {
+  font-size: 24px;
+  color: #000;
+  margin-right: 8px;
+}
+
+.moneymanagementdash-box-title {
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  margin: 0; /* Remove bottom margin */
+  flex-grow: 1; /* Allow the title to take up remaining space */
+  text-align: left; /* Align text to the left */
+}
+
+.moneymanagementdash-box-amount {
+  font-size: 18px;
+  font-weight: 700;
+  color: #000;
+}
+
+@media (max-width: 1200px) {
+  .moneymanagementdash-box {
+    flex: 1 1 calc(33.33% - 20px); /* 3 boxes per row on medium screens */
+  }
+}
+
+@media (max-width: 900px) {
+  .moneymanagementdash-box {
+    flex: 1 1 calc(50% - 20px); /* 2 boxes per row on small screens */
+  }
+}
+
+@media (max-width: 600px) {
+  .moneymanagementdash-box {
+    flex: 1 1 100%; /* 1 box per row on very small screens */
+  }
+}

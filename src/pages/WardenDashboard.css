@@ -1,0 +1,180 @@
+.DashSection-title {
+    font-size: 30px;
+    font-weight: 400;
+    color: #000;
+    margin-bottom: 20px;
+}
+
+.DashSection-container {
+    display: flex;
+    width: 100%;
+    gap: 20px;
+}
+
+.DashSection-left {
+    flex: 8;
+    display: flex;
+    flex-wrap: wrap; /* Allow items to wrap onto the next line */
+    gap: 20px;
+    margin-right: 380px; /* Adjust margin to fit the new layout */
+    margin-left: 20px;
+}
+
+.DashSection-right {
+    flex: 3;
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    height: 95vh;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    overflow-y: auto;
+}
+
+.DashSection-box {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    flex: 1;
+}
+
+.DashSection-box h4 {
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-weight: 500;
+    color: #707070;
+}
+
+.DashSection-box p {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.DashSection-actions {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px; /* Add spacing between the last box and the buttons */
+    width: 100%;
+}
+
+.DashSection-button {
+    background-color: #ffffff;
+    color: #000;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    flex: 1; /* Allow buttons to take equal width */
+    margin: 0 10px; /* Spacing between buttons */
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Spacing between icon and text */
+    font-size: 18px;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.DashSection-button-icon {
+    background-color: #695CFE;
+    color: #fff;
+    border-radius: 50%;
+    padding: 8px;
+    height: 30px;
+    width: 30px;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    transition: all 0.3s ease;
+}
+
+
+.DashSection-button:hover {
+    background-color: #695CFE; /* Darker shade for hover effect */
+    color: #fff;
+    border: 1px dashed #fff;
+}
+
+.DashSection-button:hover .DashSection-button-icon {
+    background-color: #fff; 
+    color: #695CFE;
+}
+
+
+.DashSection-alert {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.DashSection-alert h4 {
+    font-size: 18px;
+    margin-bottom: 10px;
+    font-weight: 600;
+    color: #ff5722;
+}
+
+.DashSection-alert-content {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.DashSection-alert-box {
+    display: flex;
+    align-items: center;
+    background-color: #f9f9f9;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    width: 100%; /* Reduce width to 80% */
+    max-width: 300px; /* Add a max-width */
+    white-space: nowrap; /* Prevents text from wrapping */
+    overflow: hidden; /* Hides overflowed content */
+    text-overflow: ellipsis; /* Adds an ellipsis (...) to the overflowed text */
+}
+
+.alert-avatar {
+    font-size: 24px;
+    color: #ff5722;
+    margin-right: 15px;
+}
+
+.alert-info {
+    flex: 1;
+}
+
+.alert-info h5 {
+    font-size: 16px;
+    margin: 0;
+    color: #333;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Ensures the title also handles overflow */
+}
+
+.alert-info p {
+    font-size: 14px;
+    color: #777;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; /* Ensures the description also handles overflow */
+}
+
+.alert-view-button {
+    background-color: #ff5722;
+    color: #fff;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+}
