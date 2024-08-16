@@ -45,7 +45,7 @@ const PaymentModal = ({ isOpen, onClose }) => {
   }, [isOpen]);
 
   const checkPaymentExistence = (monthYear) => {
-    fetch(`http://localhost:5000/api/payments/check-payment/${monthYear}`)
+    fetch(`https://heavensmanagement.onrender.com/api/payments/check-payment/${monthYear}`)
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
@@ -67,7 +67,7 @@ const PaymentModal = ({ isOpen, onClose }) => {
 
   const fetchHostelId = (hostelName) => {
     if (hostelName) {
-      fetch(`http://localhost:5000/api/properties/property-name/${encodeURIComponent(hostelName)}`)
+      fetch(`https://heavensmanagement.onrender.com/api/properties/property-name/${encodeURIComponent(hostelName)}`)
         .then(response => {
           if (!response.ok) {
             return response.json().then(err => { throw new Error(err.message); });
@@ -92,7 +92,7 @@ const PaymentModal = ({ isOpen, onClose }) => {
 
   const fetchStudentDetails = () => {
     if (formData.studentId) {
-      fetch(`http://localhost:5000/api/students/student-id/${formData.studentId}`)
+      fetch(`https://heavensmanagement.onrender.com/api/students/student-id/${formData.studentId}`)
         .then(response => {
           if (!response.ok) {
             throw new Error('Network response was not ok');
@@ -173,7 +173,7 @@ const PaymentModal = ({ isOpen, onClose }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    fetch('http://localhost:5000/api/payments', {
+    fetch('https://heavensmanagement.onrender.com/api/payments', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
