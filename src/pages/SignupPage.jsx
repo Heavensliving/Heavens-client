@@ -16,7 +16,7 @@ const SignupPage = () => {
     // Fetch property names and IDs from the backend
     const fetchProperties = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/properties/get-properties');
+        const response = await fetch('https://heavensmanagement.onrender.com/api/properties/get-properties');
         const data = await response.json();
         setProperties(data);
       } catch (error) {
@@ -48,7 +48,7 @@ const SignupPage = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5000/api/user/signup', {
+      const response = await fetch('https://heavensmanagement.onrender.com/api/user/signup', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
