@@ -8,7 +8,7 @@ const Sidebar = ({ children }) => {
 
     const menuItem = [
         {
-            path: userRole === 'property-manager' ? "/dashboard-property-manage" : "/",
+            path: userRole === 'property-manager' ? "/dashboard-property-manage" : "/Dashboard",
             name: "Dashboard",
             icon: <i className='bx bx-home'></i>
         },
