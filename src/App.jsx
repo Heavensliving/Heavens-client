@@ -32,7 +32,7 @@ function App() {
           element={
             <Sidebar>
               <Routes>
-                <Route path="//Dashboard" element={<Dashboard />} />
+                <Route path="/Dashboard" element={<Dashboard />} />
                 <Route path="/StudentManagement" element={<StudentManagement />} />
                 <Route path="/StaffManagement" element={<StaffManagement />} />
                 <Route path="/PropertyManagement" element={<PropertyManagement />} />
