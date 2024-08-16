@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import io from 'socket.io-client';
 import './PropertyManagement.css';
 
-const socket = io('http://localhost:5000');
+const socket = io('https://heavensmanagement.onrender.com');
 
 const PropertyManagement = () => {
   const [properties, setProperties] = useState([]);
@@ -13,7 +13,7 @@ const PropertyManagement = () => {
   useEffect(() => {
     const fetchProperties = async () => {
       try {
-        const response = await fetch('http://localhost:5000/api/properties/get-properties');
+        const response = await fetch('https://heavensmanagement.onrender.com/api/properties/get-properties');
         const data = await response.json();
         setProperties(data);
       } catch (error) {
