@@ -46,7 +46,7 @@ const StudentDetail = () => {
   useEffect(() => {
     const fetchStudentDetail = async () => {
       try {
-        const response = await fetch(`http://localhost:5000/api/students/${id}`);
+        const response = await fetch(`https://heavensmanagement.onrender.com/api/students/${id}`);
         const data = await response.json();
         setStudent(data);
         setFormData({
@@ -79,7 +79,7 @@ const StudentDetail = () => {
         });
         console.log('Selected Student ID:', data.studentId);
 
-      const paymentResponse = await fetch(`http://localhost:5000/api/payments/payments/${data.studentId}`);
+      const paymentResponse = await fetch(`https://heavensmanagement.onrender.com/api/payments/payments/${data.studentId}`);
       const paymentData = await paymentResponse.json();
       setPayments(Array.isArray(paymentData) ? paymentData : []);
 
@@ -130,7 +130,7 @@ const StudentDetail = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch(`http://localhost:5000/api/students/${id}`, {
+      const response = await fetch(`https://heavensmanagement.onrender.com/api/students/${id}`, {
         method: 'PUT',
         headers: {
             'Content-Type': 'application/json'
