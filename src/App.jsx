@@ -22,6 +22,7 @@ function App() {
     <Router>
       <Routes>
         {/* Login page without Sidebar */}
+        <Route path="/" element={<LoginPage />} />
         <Route path="/Login" element={<LoginPage />} />
         <Route path="/signup-page" element={<SignupPage />} />
 
@@ -31,7 +32,7 @@ function App() {
           element={
             <Sidebar>
               <Routes>
-                <Route path="/" element={<Dashboard />} />
+                <Route path="//Dashboard" element={<Dashboard />} />
                 <Route path="/StudentManagement" element={<StudentManagement />} />
                 <Route path="/StaffManagement" element={<StaffManagement />} />
                 <Route path="/PropertyManagement" element={<PropertyManagement />} />
