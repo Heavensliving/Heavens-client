@@ -63,7 +63,7 @@ const AddStudentModal = ({ isOpen, onRequestClose }) => {
   useEffect(() => {
     const fetchHostelNames = async () => {
       try {
-        const response = await axios.get('http://localhost:5000/api/properties/get-properties');
+        const response = await axios.get('https://heavensmanagement.onrender.com/api/properties/get-properties');
         if (response.status === 200) {
           const allHostelNames = response.data.map(property => property.propertyName);
           
@@ -168,7 +168,7 @@ const AddStudentModal = ({ isOpen, onRequestClose }) => {
       formDataObj.append('photoUrl', photoUrl);
   
       // Submit the form data
-      await axios.post('http://localhost:5000/api/students', formDataObj, {
+      await axios.post('https://heavensmanagement.onrender.com/api/students', formDataObj, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
