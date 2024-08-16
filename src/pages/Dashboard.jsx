@@ -16,7 +16,7 @@ const Dashboard = () => {
 
     useEffect(() => {
       
-      const socket = io('http://localhost:5000'); 
+      const socket = io('https://heavensmanagement.onrender.com'); 
 
       const checkUserRole = () => {
         const userRole = localStorage.getItem('userRole');
@@ -31,7 +31,7 @@ const Dashboard = () => {
       // Fetch the initial total number of students
       const fetchStudents = async () => {
           try {
-              const response = await axios.get('http://localhost:5000/api/students');
+              const response = await axios.get('https://heavensmanagement.onrender.com/api/students');
               setTotalStudents(response.data.length);
           } catch (error) {
               console.error('Error fetching student data:', error);
@@ -41,7 +41,7 @@ const Dashboard = () => {
        // Fetch the initial total number of properties
        const fetchProperties = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/properties/get-properties');
+            const response = await axios.get('https://heavensmanagement.onrender.com/api/properties/get-properties');
             setTotalProperties(response.data.length); // Set the length of properties
         } catch (error) {
             console.error('Error fetching properties data:', error);
