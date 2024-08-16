@@ -4,7 +4,7 @@ import './StudentManagement.css';
 import io from 'socket.io-client';
 import { ToastContainer } from 'react-toastify';
 
-const socket = io.connect('http://localhost:5000');
+const socket = io.connect('https://heavensmanagement.onrender.com');
 
 const StudentManagement = () => {
   const [students, setStudents] = useState([]);
@@ -37,7 +37,7 @@ const StudentManagement = () => {
   
   const fetchStudents = async () => {
     try {
-      const response = await fetch('http://localhost:5000/api/students');
+      const response = await fetch('https://heavensmanagement.onrender.com/api/students');
       const data = await response.json();
   
       // Filter students with current status 'Checked in' or 'Checked out'
