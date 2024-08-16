@@ -71,7 +71,7 @@ const ExpenseModal = ({ isOpen, onClose }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:5000/api/add-expense', {
+      const response = await fetch('https://heavensmanagement.onrender.com/api/add-expense', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
