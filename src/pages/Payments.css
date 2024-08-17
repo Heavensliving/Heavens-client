@@ -73,8 +73,8 @@
 }
 
 .moneymanagementdash-container {
-  max-height: 520px; /* Set max height for the container */
-  overflow-y: auto; /* Enable vertical scrolling */
+  max-height: 80vh; /* Set a maximum height relative to the viewport height */
+  overflow-y: auto; /* Enable vertical scrolling if the content overflows */
   border: 1px solid #ccc; /* Optional: Add a border to the container */
   padding: 10px;
   margin-bottom: 20px; /* Add spacing between sections */
