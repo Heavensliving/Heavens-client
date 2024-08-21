@@ -46,6 +46,21 @@
   background-color: #73be73;
   color: #fff;
 }
+.add-commission-button {
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #c1e06e;
+  color: #4f6c00;
+}
+
+.add-commission-button:hover {
+  padding: 10px;
+  font-size: 16px;
+  cursor: pointer;
+  background-color: #a0b85f;
+  color: #ffffff;
+}
 
 .moneymanagementdash-section {
   margin-top: 20px;
