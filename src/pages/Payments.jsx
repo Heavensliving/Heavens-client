@@ -31,7 +31,7 @@ const Payments = () => {
 
   const fetchStudents = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/students');
+      const response = await axios.get('https://heavensmanagement.onrender.com/api/students');
       const studentData = response.data;
       setStudents(studentData);
       calculateTotals(studentData);
@@ -42,7 +42,7 @@ const Payments = () => {
 
   const fetchTotalCommission = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/commission/all');
+      const response = await axios.get('https://heavensmanagement.onrender.com/api/commission/all');
       const totalCommission = response.data.totalCommission;
       setTotalCommission(totalCommission);
     } catch (error) {
@@ -53,7 +53,7 @@ const Payments = () => {
 
   const fetchTotalReceivedAmount = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/payments/totalReceivedAmount');
+      const response = await axios.get('https://heavensmanagement.onrender.com/api/payments/totalReceivedAmount');
       const totalReceived = response.data.totalAmount;
       setTotalReceivedAmount(totalReceived);
     } catch (error) {
@@ -63,7 +63,7 @@ const Payments = () => {
 
   const fetchTotalWaveOffAmount = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/payments/totalWaveOff');
+      const response = await axios.get('https://heavensmanagement.onrender.com/api/payments/totalWaveOff');
       const totalWaveOff = response.data.totalWaveOff;
       setTotalWaveOffAmount(totalWaveOff);
     } catch (error) {
@@ -73,7 +73,7 @@ const Payments = () => {
 
   const fetchTotalExpenseAmount = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/total-expense'); // Adjust URL as needed
+      const response = await axios.get('https://heavensmanagement.onrender.com/api/total-expense'); // Adjust URL as needed
       const totalExpense = response.data.totalAmount;
       setTotalExpenseAmount(totalExpense);
     } catch (error) {
@@ -108,7 +108,7 @@ const Payments = () => {
 
   const handleDelete = async (studentId) => {
     try {
-      await axios.delete(`http://localhost:5000/api/students/${studentId}`);
+      await axios.delete(`https://heavensmanagement.onrender.com/api/students/${studentId}`);
       toast.success('Student data deleted successfully!');
       fetchStudents(); 
     } catch (error) {
