@@ -15,25 +15,26 @@ const WardenDashboard = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const socket = io('https://heavensmanagement.onrender.com');
+    const socket = io('http://localhost:5000');
 
     // Fetch the logged-in user's propertyName from localStorage
     const propertyName = localStorage.getItem('userPropertyName');
 
-      const checkUserRole = () => {
-        const userRole = localStorage.getItem('userRole');
-        
-        if (userRole !== 'property-manager') {
-            navigate('/login');
-        }
+    const checkUserRole = () => {
+      const userRole = localStorage.getItem('userRole');
+      
+      if (userRole !== 'property-manager') {
+          navigate('/login');
+      }
     };
 
     checkUserRole();
 
-    // Fetch the initial total number of students
+    // Fetch the initial total number of students based on propertyName
     const fetchStudents = async () => {
       try {
-        const response = await axios.get('https://heavensmanagement.onrender.com/api/students');
+        // Fetch students where hostelName matches the propertyName
+        const response = await axios.get(`http://localhost:5000/api/students/students-by-hostel/${propertyName}`);
         setTotalStudents(response.data.length);
       } catch (error) {
         console.error('Error fetching student data:', error);
@@ -43,7 +44,7 @@ const WardenDashboard = () => {
     // Fetch the total number of properties where propertyName matches
     const fetchProperties = async () => {
       try {
-        const response = await axios.get('https://heavensmanagement.onrender.com/api/properties/get-properties');
+        const response = await axios.get('http://localhost:5000/api/properties/get-properties');
         const properties = response.data;
         const matchingProperties = properties.filter(property => property.propertyName === propertyName);
         setTotalProperties(matchingProperties.length); // Set the count of matching properties
