@@ -3,7 +3,7 @@ import axios from 'axios';
 import PaymentModal from './FeePayment/PaymentModal';
 import ExpenseModal from './Expense modal/ExpenseModal';
 import { ToastContainer, toast } from 'react-toastify';
-import { FaDollarSign, FaCalendarAlt, FaArrowUp, FaArrowDown, FaFileInvoiceDollar, FaBalanceScale, FaMoneyCheck, FaRegMoneyBillAlt } from 'react-icons/fa';
+import { FaDollarSign, FaCalendarAlt, FaArrowUp, FaArrowDown, FaFileInvoiceDollar, FaBalanceScale, FaMoneyCheck, FaRegMoneyBillAlt, FaArrowCircleUp } from 'react-icons/fa';
 import './Payments.css';
 
 const Payments = () => {
@@ -18,17 +18,20 @@ const Payments = () => {
   const [totalReceivedAmount, setTotalReceivedAmount] = useState(0);
   const [totalWaveOffAmount, setTotalWaveOffAmount] = useState(0);
   const [totalExpenseAmount, setTotalExpenseAmount] = useState(0);
+  const [totalCommission, setTotalCommission] = useState(0);
+
 
   useEffect(() => {
     fetchStudents();
     fetchTotalReceivedAmount();
     fetchTotalWaveOffAmount(); // Fetch total wave-off amount from the backend
     fetchTotalExpenseAmount();
+    fetchTotalCommission();
   }, []);
 
   const fetchStudents = async () => {
     try {
-      const response = await axios.get('https://heavensmanagement.onrender.com/api/students');
+      const response = await axios.get('http://localhost:5000/api/students');
       const studentData = response.data;
       setStudents(studentData);
       calculateTotals(studentData);
@@ -37,9 +40,20 @@ const Payments = () => {
     }
   };
 
+  const fetchTotalCommission = async () => {
+    try {
+      const response = await axios.get('http://localhost:5000/api/commission/all');
+      const totalCommission = response.data.totalCommission;
+      setTotalCommission(totalCommission);
+    } catch (error) {
+      console.error('Error fetching total commission amount:', error);
+    }
+  };
+  
+
   const fetchTotalReceivedAmount = async () => {
     try {
-      const response = await axios.get('https://heavensmanagement.onrender.com/api/payments/totalReceivedAmount');
+      const response = await axios.get('http://localhost:5000/api/payments/totalReceivedAmount');
       const totalReceived = response.data.totalAmount;
       setTotalReceivedAmount(totalReceived);
     } catch (error) {
@@ -49,7 +63,7 @@ const Payments = () => {
 
   const fetchTotalWaveOffAmount = async () => {
     try {
-      const response = await axios.get('https://heavensmanagement.onrender.com/api/payments/totalWaveOff');
+      const response = await axios.get('http://localhost:5000/api/payments/totalWaveOff');
       const totalWaveOff = response.data.totalWaveOff;
       setTotalWaveOffAmount(totalWaveOff);
     } catch (error) {
@@ -59,7 +73,7 @@ const Payments = () => {
 
   const fetchTotalExpenseAmount = async () => {
     try {
-      const response = await axios.get('https://heavensmanagement.onrender.com/api/total-expense'); // Adjust URL as needed
+      const response = await axios.get('http://localhost:5000/api/total-expense'); // Adjust URL as needed
       const totalExpense = response.data.totalAmount;
       setTotalExpenseAmount(totalExpense);
     } catch (error) {
@@ -94,7 +108,7 @@ const Payments = () => {
 
   const handleDelete = async (studentId) => {
     try {
-      await axios.delete(`https://heavensmanagement.onrender.com/api/students/${studentId}`);
+      await axios.delete(`http://localhost:5000/api/students/${studentId}`);
       toast.success('Student data deleted successfully!');
       fetchStudents(); 
     } catch (error) {
@@ -154,7 +168,7 @@ const Payments = () => {
               <FaDollarSign className='moneymanagementdash-icon' />
               <div className='moneymanagementdash-box-content'>
                 <p className='moneymanagementdash-box-title'>Total Income</p>
-                <p className='moneymanagementdash-box-amount'>₹{(nonRefundableDepositAmount + totalMonthlyAmount + totalAdvanceAmount).toFixed(2)}</p>
+                <p className='moneymanagementdash-box-amount'>₹{(nonRefundableDepositAmount + totalReceivedAmount + totalAdvanceAmount).toFixed(2)}</p>
               </div>
             </div>
             <div className='moneymanagementdash-box' style={{ backgroundColor: '#fff3e0' }}>
@@ -189,6 +203,13 @@ const Payments = () => {
                 <p className='moneymanagementdash-box-amount'>₹{nonRefundableDepositAmount.toFixed(2)}</p>
               </div>
             </div>
+            <div className='moneymanagementdash-box' style={{ backgroundColor: '#fff3e0' }}>
+                <FaArrowCircleUp className='moneymanagementdash-icon' />
+                <div className='moneymanagementdash-box-content'>
+                  <p className='moneymanagementdash-box-title'>Commission</p>
+                  <p className='moneymanagementdash-box-amount'>₹{totalCommission.toFixed(2)}</p>
+                </div>
+              </div>
           </div><br></br><hr></hr>
 
           {/* Third Section: Monthly Rent, Received Amount, Pending Amount */}
