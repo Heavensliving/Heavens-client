@@ -33,7 +33,7 @@ const CommissionModal = ({ isOpen, onClose }) => {
     };
 
     try {
-      const response = await fetch('http://localhost:5000/api/commission/commissions', {
+      const response = await fetch('https://heavensmanagement.onrender.com/api/commission/commissions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
