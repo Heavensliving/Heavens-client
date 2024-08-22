@@ -35,7 +35,7 @@ const WardenPayments = () => {
   
     const fetchStudents = async () => {
       try {
-          const response = await axios.get('https://heavensmanagement.onrender.com/api/students');
+          const response = await axios.get('http://localhost:5000/api/students');
           const studentData = response.data;
           setStudents(studentData);
           calculateTotals(studentData);
@@ -43,7 +43,7 @@ const WardenPayments = () => {
           // Fetch refundable and non-refundable deposits
           const propertyName = localStorage.getItem('userPropertyName');
           if (propertyName) {
-              const depositResponse = await axios.get('https://heavensmanagement.onrender.com/api/students/students/by-property', {
+              const depositResponse = await axios.get('http://localhost:5000/api/students/students/by-property', {
                   params: { propertyName }
               });
               const { refundableDeposits, nonRefundableDeposits } = depositResponse.data;
@@ -61,7 +61,7 @@ const WardenPayments = () => {
         if (!propertyName) {
             throw new Error('Property name not found in localStorage');
         }
-        const response = await axios.get('https://heavensmanagement.onrender.com/api/commission/by-property', {
+        const response = await axios.get('http://localhost:5000/api/commission/by-property', {
             params: { propertyName } // Send propertyName as a query parameter
         });
         console.log('Commission response:', response.data); // Log the response
@@ -74,7 +74,7 @@ const WardenPayments = () => {
   const fetchTotalReceivedAmount = async () => {
     try {
       const propertyId = localStorage.getItem('userPropertyId'); // Get the logged-in user's propertyId
-      const response = await axios.get('https://heavensmanagement.onrender.com/api/payments/totalReceivedAmount/total', {
+      const response = await axios.get('http://localhost:5000/api/payments/totalReceivedAmount/total', {
         params: { propertyId } // Send propertyId as a query parameter
       });
       const totalReceived = response.data.totalAmount;
@@ -87,7 +87,7 @@ const WardenPayments = () => {
   const fetchTotalWaveOffAmount = async () => {
     try {
       const propertyId = localStorage.getItem('userPropertyId'); // Get the logged-in user's propertyId
-      const response = await axios.get('https://heavensmanagement.onrender.com/api/payments/totalWaveOff/by-filter', {
+      const response = await axios.get('http://localhost:5000/api/payments/totalWaveOff/by-filter', {
         params: { propertyId } // Send propertyId as a query parameter
       });
       const totalWaveOff = response.data.waveOff;
@@ -103,7 +103,7 @@ const WardenPayments = () => {
         if (!propertyName) {
             throw new Error('Property name not found in localStorage');
         }
-        const response = await axios.get('https://heavensmanagement.onrender.com/api/students/monthly-rent/by-property', {
+        const response = await axios.get('http://localhost:5000/api/students/monthly-rent/by-property', {
             params: { propertyName } // Send propertyName as a query parameter
         });
         const totalMonthlyRent = response.data.totalMonthlyRent;
@@ -119,7 +119,7 @@ const WardenPayments = () => {
     const fetchTotalExpenseAmount = async () => {
       try {
           const propertyId = localStorage.getItem('userPropertyId'); 
-          const response = await axios.get('https://heavensmanagement.onrender.com/api/total-expense/by-filter', {
+          const response = await axios.get('http://localhost:5000/api/total-expense/by-filter', {
               params: { propertyId } // Send propertyId as a query parameter
           });
           const totalExpense = response.data.totalAmount;
@@ -157,7 +157,7 @@ const WardenPayments = () => {
   
     const handleDelete = async (studentId) => {
       try {
-        await axios.delete(`https://heavensmanagement.onrender.com/api/students/${studentId}`);
+        await axios.delete(`http://localhost:5000/api/students/${studentId}`);
         toast.success('Student data deleted successfully!');
         fetchStudents(); 
       } catch (error) {
@@ -253,7 +253,7 @@ const WardenPayments = () => {
                 <FaArrowUp className='moneymanagementdash-icon' />
                 <div className='moneymanagementdash-box-content'>
                   <p className='moneymanagementdash-box-title'>Non-Refundable Deposit</p>
-                  <p className='moneymanagementdash-box-amount'>₹{nonRefundableDepositAmount.toFixed(2)}</p>
+                  <p className='moneymanagementdash-box-amount'>₹{(nonRefundableDepositAmount - totalCommissionAmount).toFixed(2)}</p>
                 </div>
               </div>
 
